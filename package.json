@@ -1,0 +1,90 @@
+{
+  "name": "@cardalabs/sdk",
+  "version": "1.0.0",
+  "description": "LLM Toolkit for Cardano ecosystem - A comprehensive SDK for interacting with Cardano data providers",
+  "license": "GPL-3.0-only",
+  "author": "cardalabs",
+  "type": "module",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "cardano",
+    "blockchain",
+    "crypto",
+    "sdk",
+    "api",
+    "llm",
+    "toolkit"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types && npm run build:package-json",
+    "build:cjs": "tsc -p tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json && tsc-alias -p tsconfig.esm.json && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:package-json": "echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "clean": "rimraf dist",
+    "start": "node dist/cjs/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run clean && npm run build && npm run test && npm run security",
+    "prepack": "npm run build",
+    "security": "npm audit --audit-level moderate"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.19.0",
+    "eslint": "^9.28.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "semantic-release": "^22.0.12",
+    "ts-jest": "^29.1.1",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CardaLabs/sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CardaLabs/sdk/issues"
+  },
+  "homepage": "https://github.com/CardaLabs/sdk#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/CardaLabs"
+  }
+}

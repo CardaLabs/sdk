@@ -1,0 +1,50 @@
+# Source files (only ship dist/)
+src/
+tests/
+examples/
+docs/
+
+# Development files
+.claude/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Configuration files
+tsconfig*.json
+eslint.config.js
+jest.config.js
+.prettierrc
+.gitignore
+
+# Environment and logs
+.env*
+*.log
+logs/
+
+# Testing and coverage
+coverage/
+*.lcov
+
+# Build artifacts (keep only what's in "files" field)
+node_modules/
+.cache/
+.parcel-cache/
+tmp/
+temp/
+
+# Git
+.git/
+.gitignore
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Development documentation
+CLAUDE.md
+*.md.backup 
